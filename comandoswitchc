@@ -1,0 +1,8 @@
+Ingrese el modo de configuración de interfaz para la VLAN 1.
+interface vlan 1
+Configure la dirección IPv4 como 192.168.1.20 y la máscara de subred como 255.255.255.0.
+ip address 192.168.1.20 255.255.255.0
+
+Habilitar la interfaz.
+no shutdown
+%LINK-5-CHANGED: Interface Vlan1, changed state to up

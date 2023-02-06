@@ -1,0 +1,79 @@
+configurar como r1 nombre
+enable
+configure terminal
+hostname R1 
+
+ingresa al modo de configuracin global
+configure terminal
+
+Configure el nombre del dispositivo.
+hostname nombrequequiera
+
+Proteja el modo EXEC con privilegios./ establecer contraseña secreta
+enable secret contraseñaqquieras
+
+Proteger el modo EXEC de usuario  //  
+Configure “cisco” como contraseña de la línea de consola 
+y solicite a los usuarios que inicien sesión.
+
+line console 0
+password password
+login
+exit
+
+Proteger el acceso remoto por Telnet y SSH 
+Para vty línea 0 a 4, configure 'cisco' como 
+la contraseña, requiera que los usuarios inicien sesión, 
+habilite el acceso 
+SSH y Telnet y regrese al modo de configuración global.
+
+line vty 0 4
+password password
+login
+transport input ssh telnet
+exit 
+
+Proteja todas las contraseñas del archivo de configuración.
+exit
+service password-encryption
+
+Proporcione una notificación legal.
+banner motd #Authorized Access Only!#
+
+Guarde la configuración.
+end
+copy running-config startup-config
+
+
+Los siguientes comandos aseguran el modo EXEC privilegiado y 
+el modo EXEC de usuario, habilitan el acceso remoto Telnet y 
+SSH y cifran todas las contraseñas de texto sin formato 
+(es decir, EXEC de usuario y línea VTY).
+
+
+---------------------------------------------------------------
+
+
+Configure la interfaz GigabitEthernet 0/0/0.
+interface gigabitethernet 0/0/0
+
+Describa el enlace como 'Enlace a LAN'
+description Link to LAN
+
+Configure la interfaz con una dirección IPv4192.168.10.1 y 
+una máscara de subred:255.255.255.0
+
+ip address 192.168.10.1 255.255.255.0
+
+Configure la interfaz con la dirección IPv6 2001:db8:acad:10::1 y 
+la longitud del prefijo /64.
+
+ipv6 address 2001:db8:acad:10::1/64
+
+Habilite la interfaz y regrese al modo de configuración global.
+no shutdown
+exit
+
+Configure 192.168.10.1 como gateway predeterminado para el S1.
+ip default-gateway 192.168.10.1
+
