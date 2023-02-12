@@ -6,3 +6,68 @@ ip address 192.168.1.20 255.255.255.0
 Habilitar la interfaz.
 no shutdown
 %LINK-5-CHANGED: Interface Vlan1, changed state to up
+
+
+Comandos switch
+
+Ingresar al modo EXEC privilegiado
+enable
+
+¿Qué comando muestra el contenido actual de la memoria de acceso
+aleatorio no volátil (NVRAM)?
+show startup-config
+examinar la configuracón del switch
+show running-config
+Cree una configuración básica del switch
+Paso 1: Asigne un nombre a un switch.
+configure terminal
+hostname nombrequequeramos
+exit
+Ingrese el modo de configuración de interfaz para la vlan 1
+interface vlan 1
+
+Configure la dirección IPv4 como 192.168.1.20 y la máscara de subred como
+255.255.255.0
+ip address 192.168.1.20 255.255.255.0
+Habilitar la interfaz.
+no shutdown
+Proporcione acceso seguro a la línea de consola
+configure terminal
+line console 0
+password letmein
+login
+exit
+Proporcione un acceso seguro al modo privilegiado.
+enable
+configure terminal
+enable password tucontraseña
+exit
+Verifique que el acceso al modo privilegiado sea seguro.
+enable
+configure terminal
+enable password elqqueramos
+exit
+
+.
+
+Configure una contraseña encriptada para proporcionar un acceso seguro al
+modo privilegiado.
+enable.
+config t
+enable secret itsasecret
+exit
+
+abreviar show running-config como show run
+8: Encripte las contraseñas de consola y de enable.
+config t
+service password-encryption
+exit
+
+Configure un aviso de mensaje del día (MOTD).
+config t
+banner motd "esto wes el mensaje que pondremos"
+exit
+
+Guarde y verifique archivos de configuración en NVRAM
+copy running-config startup-config o cop run star
+Destination filename [startup-config]?[Enter]
